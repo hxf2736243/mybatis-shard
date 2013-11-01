@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 注意：每个标签必须按顺序写，不然蛋疼的DTD会提示错误：The content of element type "configuration" must match "(properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,plugins?,environments?,mappers?)". -->
+<configuration>
+
+	<properties resource="org/mybatis/db/shard/dbroute/tutorial01/config/mysql-jdbc-connection.properties">
+	</properties>
+	
+	<settings>
+		<setting name="defaultStatementTimeout" value="25000"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias alias="param" type="org.mybatis.db.shard.common.RouteParam"/>
+		<typeAlias alias="hashMap" type="java.util.HashMap"/>
+		<typeAlias alias="user" type="org.mybatis.db.shard.dbroute.tutorial01.po.User"/>
+	</typeAliases>
+	
+	<plugins>
+		<plugin interceptor="org.mybatis.db.shard.engine.SQLPrintPlugin">
+		</plugin>
+	</plugins>
+	
+	<environments default="development">
+		<!-- shard_01数据库环境配置 -->
+		<environment id="shard_01">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${base.driver}" />
+				<property name="url" value="${shard_01.url}" />
+				<property name="username" value="${shard_01.username}" />
+				<property name="password" value="${shard_01.password}" />
+			</dataSource>
+		</environment>
+		
+		<!-- shard_02数据库环境配置 -->
+		<environment id="shard_02">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${base.driver}" />
+				<property name="url" value="${shard_02.url}" />
+				<property name="username" value="${shard_02.username}" />
+				<property name="password" value="${shard_02.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- ORM映射文件 -->
+	<mappers>
+		<mapper resource="org/mybatis/db/shard/dbroute/tutorial01/po/UserSqlMap.xml" />
+	</mappers>
+	
+	
+</configuration> 
