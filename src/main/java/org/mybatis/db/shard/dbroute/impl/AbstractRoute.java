@@ -1,6 +1,5 @@
 package org.mybatis.db.shard.dbroute.impl;
 
-import java.text.Format;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -119,4 +118,15 @@ public abstract class AbstractRoute  implements IDBRoute  {
 	public void setTableNamePostfixFormat(String tableNamePostfixFormat) {
 		this.tableNamePostfixFormat = tableNamePostfixFormat;
 	}
+
+	boolean isGoMaster = false;
+	public boolean isGoMaster() {
+		return isGoMaster;
+	}
+
+	public void setGoMaster(boolean isGoMaster) {
+		this.isGoMaster = isGoMaster;
+	}
+
+
 }

@@ -4,16 +4,15 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * 
- * @ClassName: SqlRWAnalyzeImpl 
+ * @ClassName: SqlReadWirteAnalyze 
  * @Description: TODO
  * @author huhailiang(javadeeper@gmail.com)  
- * @date 2013-10-29 下午3:42:13 
+ * @date 2013-11-1 下午4:45:57 
  *
  */
-public class SqlRWAnalyzeImpl implements SqlRWAnalyze {
+public class SqlReadWirteAnalyze implements ReadWriteAnalyze<String> {
 
-	
-	public boolean isReadSQL(String sql) {
+	public boolean isRead(String sql) {
 		if(StringUtils.containsIgnoreCase(sql, "insert") 
 				&& StringUtils.containsIgnoreCase(sql, "update") 
 				&& StringUtils.containsIgnoreCase(sql, "delete")){
@@ -23,7 +22,7 @@ public class SqlRWAnalyzeImpl implements SqlRWAnalyze {
 		}
 	}
 
-	public boolean isWriteSQL(String sql) {
+	public boolean isWrite(String sql) {
 		if(StringUtils.containsIgnoreCase(sql, "insert")
 				||StringUtils.containsIgnoreCase(sql, "update")
 				||StringUtils.containsIgnoreCase(sql, "delete")){

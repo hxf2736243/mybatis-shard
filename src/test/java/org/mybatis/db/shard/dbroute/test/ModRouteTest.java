@@ -1,7 +1,5 @@
 package org.mybatis.db.shard.dbroute.test;
 
-import java.text.DecimalFormat;
-
 import org.mybatis.db.shard.dbroute.impl.ModRoute;
 
 public class ModRouteTest {

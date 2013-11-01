@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+								    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+								    http://www.springframework.org/schema/tx   
+								    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd   
+								    http://www.springframework.org/schema/aop    
+								    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="shard02LBStrategy" class="org.mybatis.db.shard.engine.loadbalance.RandomLBStrategy"></bean>
+	<bean id="shard02DataSourceKeyRouter" class="org.mybatis.db.shard.datasourse.DataSourceKeyRouter">
+		<property name="shardContext" ref="shardContext" />
+		<property name="lBStrategy"   ref="shard02LBStrategy" />
+	</bean>
+	
+	<bean id="shard_02_readWriteGroupDataSource" class="org.mybatis.db.shard.spring.datasource.ReadWriteGroupDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="shard02_read01_dataSource" value-ref="shard02_read01_dataSource" />
+				<entry key="shard02_read02_dataSource" value-ref="shard02_read02_dataSource" />
+				<entry key="shard02_write_dataSource"  value-ref="shard02_write_dataSource" />
+			</map>
+		</property>
+		<property name="dataSourceKeyRouter" ref="shard02DataSourceKeyRouter" />
+	</bean>
+	
+	<bean id="shard02_read01_dataSource" parent="readAbstractDataSource">
+		<property name="driverClassName">
+			<value>${base.driver}</value>
+		</property>
+		<property name="url">
+			<value>${shard_02.read01.url}</value>
+		</property>
+		<property name="username">
+			<value>${shard_02.read01.username}</value>
+		</property>
+		<property name="password">
+			<value>${shard_02.read01.password}</value>
+		</property>
+	</bean>
+	
+	<bean id="shard02_read02_dataSource" parent="readAbstractDataSource">
+		<property name="driverClassName">
+			<value>${base.driver}</value>
+		</property>
+		<property name="url">
+			<value>${shard_02.read02.url}</value>
+		</property>
+		<property name="username">
+			<value>${shard_02.read02.username}</value>
+		</property>
+		<property name="password">
+			<value>${shard_02.read02.password}</value>
+		</property>
+	</bean>
+	
+	<bean id="shard02_write_dataSource" parent="writeAbstractDataSource">
+		<property name="driverClassName">
+			<value>${base.driver}</value>
+		</property>
+		<property name="url">
+			<value>${shard_02.write.url}</value>
+		</property>
+		<property name="username">
+			<value>${shard_02.write.username}</value>
+		</property>
+		<property name="password">
+			<value>${shard_02.write.password}</value>
+		</property>
+	</bean>
+	
+</beans>

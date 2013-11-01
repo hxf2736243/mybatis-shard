@@ -10,12 +10,12 @@ public class RandomLBStrategy<T> implements LBStrategy<T> {
 	
 	
 	public T nextWrite(List<T> writeableGroup) {
-		return writeableGroup.get(rm.nextInt(writeableGroup.size()+1));
+		return writeableGroup.get(rm.nextInt(writeableGroup.size()));
 	}
 
 	
 	public T nextRead(List<T> readableGroup) {
-		return readableGroup.get(rm.nextInt(readableGroup.size()+1));
+		return readableGroup.get(rm.nextInt(readableGroup.size()));
 	}
 
 }

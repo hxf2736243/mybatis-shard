@@ -23,8 +23,6 @@ import org.mybatis.db.shard.common.SymbolConstant;
  */
 public class ModRoute extends AbstractRoute{
 	
-	private static final String Default_Decimal_Format = "_%04d";
-	
 	private long routeId;
 	
 	private int modNum ;
@@ -78,6 +76,7 @@ public class ModRoute extends AbstractRoute{
 					if(routeRes.length>=2){
 						tableNamePostfixFormat = routeRes[1];
 					}
+					this.routeConfig = routeConfig;
 				}else{
 					throw new Exception("invalid routeConfig:"+routeConfig);
 				}
@@ -116,7 +115,7 @@ public class ModRoute extends AbstractRoute{
 
 	
 	public String toString() {		
-		return "db:"+getDBGroupName()+" table:"+getTableName();
+		return "db:["+getDBGroupName()+"] table:["+getTableName()+"] routeConfig:["+routeConfig+"] isGoMater:["+this.isGoMaster()+"]routeRuleMap:"+routeRuleMap.toString();
 	}
 
 	public long getRouteId() {

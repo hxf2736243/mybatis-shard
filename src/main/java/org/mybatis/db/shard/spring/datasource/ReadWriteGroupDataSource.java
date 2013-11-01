@@ -1,13 +1,13 @@
-package org.mybatis.db.shard.datasourse;
+package org.mybatis.db.shard.spring.datasource;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import org.mybatis.db.shard.datasourse.interfaces.ReadWriteAble;
+import org.mybatis.db.shard.engine.interfaces.IDataSourceKeyRouter;
+import org.mybatis.db.util.ForceReflectionUtils;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-import org.springframework.util.ReflectionUtils;
 
 /**
  * 
@@ -19,34 +19,19 @@ import org.springframework.util.ReflectionUtils;
  */
 public class ReadWriteGroupDataSource extends AbstractRoutingDataSource {
 
-	/**
-	 * 写库的数据库名称列表<br>
-	 * 只有在ReadWriteGroupDataSource初始化的时候初始化。<br>
-	 * 其余都是读操作，故不存在线程安全问题。<br>
-	 * 用ArrayList即可，ArrayList通过index可以加速查找Key<br>
-	 */
-	private List<String> writeAbleDataSourceKeys = new ArrayList<String>();
-	
-	/**
-	 * 读库的数据库名称列表<br>
-	 * 只有在ReadWriteGroupDataSource初始化的时候初始化。<br>
-	 * 其余都是读操作，故不存在线程安全问题。<br>
-	 * 用ArrayList即可，ArrayList通过index可以加速查找Key<br>
-	 */
-	private List<String> readAbleDataSourceKeys = new ArrayList<String>();
-
+	private IDataSourceKeyRouter<String> dataSourceKeyRouter;
 	
 	@Override
 	protected Object determineCurrentLookupKey() {
-		return null;
+		String dbKey =dataSourceKeyRouter.getKey();
+		System.out.println("--info---> dataSourceKeyRouter ReadWriteGroupDataSource["+dbKey+"] routed tagert is ");
+		return dbKey;
 	}
 	
 	public void afterPropertiesSet() {
 		super.afterPropertiesSet();
 		
-		Field targetDataSourcesField = ReflectionUtils.findField(this.getClass(), "targetDataSources");
-		
-		Map<Object, Object> targetDataSources = (Map<Object, Object>)ReflectionUtils.getField(targetDataSourcesField, this);
+		Map<Object, Object> targetDataSources = (Map<Object, Object>)ForceReflectionUtils.getFieldValue(this, "targetDataSources");
 		
 		this.classifyReadWriteDataSourceKeys(targetDataSources);
 	}
@@ -62,10 +47,11 @@ public class ReadWriteGroupDataSource extends AbstractRoutingDataSource {
 	 * @throws
 	 */
 	private void classifyReadWriteDataSourceKeys(Map<Object, Object> targetDataSources){
-		if(null == targetDataSources){
+		if(null == targetDataSources || targetDataSources.isEmpty()){
 			return;
 		}
-		
+		List<String> writeKeys = new LinkedList<String>();	
+		List<String> readKeys = new LinkedList<String>();
 		for(Map.Entry<Object, Object> entry : targetDataSources.entrySet()){
 			Object key = entry.getKey();
 			Object value = entry.getValue();
@@ -73,15 +59,22 @@ public class ReadWriteGroupDataSource extends AbstractRoutingDataSource {
 			if(value instanceof ReadWriteAble){
 				ReadWriteAble readWriteAbleValue = (ReadWriteAble)value;
 				if(readWriteAbleValue.isCanReadable()){
-					readAbleDataSourceKeys.add(key.toString());
+					readKeys.add(key.toString());
 				}
 				if(readWriteAbleValue.isCanWriteable()){
-					writeAbleDataSourceKeys.add(key.toString());
+					writeKeys.add(key.toString());
 				}
 			}else{
-				readAbleDataSourceKeys.add(key.toString());
-				writeAbleDataSourceKeys.add(key.toString());
+				readKeys.add(key.toString());
+				writeKeys.add(key.toString());
 			}
 		}
+		dataSourceKeyRouter.setReadKeys(readKeys);
+		dataSourceKeyRouter.setWriteKeys(writeKeys);
+	}
+
+	public void setDataSourceKeyRouter(
+			IDataSourceKeyRouter<String> dataSourceKeyRouter) {
+		this.dataSourceKeyRouter = dataSourceKeyRouter;
 	}
 }
