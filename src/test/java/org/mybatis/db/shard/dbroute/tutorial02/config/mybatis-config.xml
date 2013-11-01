@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 注意：每个标签必须按顺序写，不然蛋疼的DTD会提示错误：The content of element type "configuration" must match "(properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,plugins?,environments?,mappers?)". -->
+<configuration>
+
+	
+	
+	<typeAliases>
+		<typeAlias alias="param" type="org.mybatis.db.shard.common.RouteParam"/>
+		<typeAlias alias="hashMap" type="java.util.HashMap"/>
+		<typeAlias alias="user" type="org.mybatis.db.shard.dbroute.tutorial01.po.User"/>
+	</typeAliases>
+	
+	<plugins>
+		<plugin interceptor="org.mybatis.db.shard.engine.SQLPrintPlugin" />
+	</plugins>
+	
+	<!-- ORM映射文件 -->
+	<mappers>
+		<mapper resource="org/mybatis/db/shard/dbroute/tutorial02/po/UserSqlMap.xml" />
+	</mappers>
+	
+	
+</configuration> 
