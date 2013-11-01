@@ -4,8 +4,6 @@
 
 <!-- 注意：每个标签必须按顺序写，不然蛋疼的DTD会提示错误：The content of element type "configuration" must match "(properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,plugins?,environments?,mappers?)". -->
 <configuration>
-
-	
 	
 	<typeAliases>
 		<typeAlias alias="param" type="org.mybatis.db.shard.common.RouteParam"/>

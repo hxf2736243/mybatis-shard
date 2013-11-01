@@ -1,6 +1,5 @@
-package org.mybatis.db.shard.engine.interfaces;
+package org.mybatis.db.shard.engine.mapper;
 
-import org.springframework.context.ApplicationContextAware;
 
 /**
  * 
@@ -10,7 +9,7 @@ import org.springframework.context.ApplicationContextAware;
  * @date 2013-10-31 上午 02:47:39 
  *
  */
-public interface MapperManager extends ApplicationContextAware{
+public interface IMapperManager {
 	
 	/**
 	 * 

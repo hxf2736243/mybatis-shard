@@ -1,4 +1,4 @@
-package org.mybatis.db.shard.datasourse;
+package org.mybatis.db.shard.spring.datasource;
 
 import org.mybatis.db.shard.datasourse.interfaces.ReadWriteAble;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;

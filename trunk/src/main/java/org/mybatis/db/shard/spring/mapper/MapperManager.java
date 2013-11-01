@@ -1,12 +1,14 @@
-package org.mybatis.db.shard.engine.mapper;
+package org.mybatis.db.shard.spring.mapper;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.db.shard.engine.interfaces.IShardThreadContext;
-import org.mybatis.db.shard.engine.interfaces.MapperManager;
+import org.mybatis.db.shard.engine.mapper.IMapperManager;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 /**
  * 
@@ -16,13 +18,15 @@ import org.springframework.context.ApplicationContext;
   * @date 2013-10-31 上午 02:53:39 
  *
  */
-public class DefaultMapperManager implements MapperManager{
+public class MapperManager implements IMapperManager,ApplicationContextAware{
 
 	private ApplicationContext appContext ;
 	
 	private Map<String,Object> mapperContainer = new ConcurrentHashMap<String,Object>();
 	
 	private IShardThreadContext shardContext;
+	
+    private SqlSessionFactory sqlSessionFactory;
 	
 	public void setApplicationContext(ApplicationContext applicationContext)
 			throws BeansException {
@@ -34,7 +38,10 @@ public class DefaultMapperManager implements MapperManager{
 			return (E) mapperContainer.get(mpperId);
 		}
 		
-		MapperProxy mpperProxy = new MapperProxy(appContext.getBean(mpperId),shardContext);
+		MapperProxy mpperProxy = new MapperProxy(appContext.getBean(mpperId));
+		mpperProxy.setShardContext(shardContext);
+		mpperProxy.setSqlSessionconfig(sqlSessionFactory.getConfiguration());
+		
 		E mpper = mpperProxy.getProxy();
 		mapperContainer.put(mpperId,mpper);
 		
@@ -47,6 +54,10 @@ public class DefaultMapperManager implements MapperManager{
 
 	public void setShardContext(IShardThreadContext shardContext) {
 		this.shardContext = shardContext;
+	}
+
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		this.sqlSessionFactory = sqlSessionFactory;
 	}
 	
 }

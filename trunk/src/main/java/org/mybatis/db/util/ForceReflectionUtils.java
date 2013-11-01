@@ -10,9 +10,9 @@ import java.lang.reflect.Type;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
-public class ReflectionUtils {
+public class ForceReflectionUtils {
 
-	private static final Log logger = LogFactory.getLog(ReflectionUtils.class);
+	private static final Log logger = LogFactory.getLog(ForceReflectionUtils.class);
 
 
 	/**
