@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.mybatis.db.util.Assert;
 
 /**
@@ -38,6 +40,9 @@ import org.mybatis.db.util.Assert;
  */
 public class WeightLBStrategy implements LBStrategy<String> {
 
+	/** Logger available to subclasses */
+	protected final Log logger = LogFactory.getLog(getClass());
+	
 	private Long zoomFactor = 1000L;
 	
 	/**
@@ -64,6 +69,9 @@ public class WeightLBStrategy implements LBStrategy<String> {
 		if(null == weightBean){
 			return writeableGroup.get(0);
 		}
+		if (logger.isInfoEnabled()) {
+			logger.info("WeightLBStrategy get nextWrite  tagert is : :"+ weightBean.getKey());
+		}
 		return weightBean.getKey();
 	}
 
@@ -73,6 +81,9 @@ public class WeightLBStrategy implements LBStrategy<String> {
 		WeightBean weightBean = findWeightBean(selectLocation.longValue(),readWeightBeans);
 		if(null == weightBean){
 			return readableGroup.get(0);
+		}
+		if (logger.isInfoEnabled()) {
+			logger.info("WeightLBStrategy get nextRead  tagert is : :"+ weightBean.getKey());
 		}
 		return weightBean.getKey();
 	}
@@ -142,6 +153,7 @@ public class WeightLBStrategy implements LBStrategy<String> {
 		weightMap.put("s2", 6);
 		weightMap.put("s3", 4);
 		List<WeightBean>  sssList = weightLBStrategy.initWeightList(weightMap);
+		
 		System.out.println(sssList);
 		
 		

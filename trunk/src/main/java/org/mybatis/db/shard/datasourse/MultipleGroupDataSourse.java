@@ -8,6 +8,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.mybatis.db.shard.common.Constant;
 import org.mybatis.db.shard.dbroute.interfaces.IDBRoute;
 import org.mybatis.db.shard.engine.interfaces.IShardThreadContext;
@@ -22,36 +24,39 @@ import org.mybatis.db.shard.engine.interfaces.IShardThreadContext;
  */
 public class MultipleGroupDataSourse implements DataSource {
 
+	/** Logger available to subclasses */
+	protected final Log logger = LogFactory.getLog(getClass());
+	
 	private Map<String,DataSource> dataSourceMap = new ConcurrentHashMap<String, DataSource>();;
 	
 	private IShardThreadContext shardContext;
 	
 	public PrintWriter getLogWriter() throws SQLException {
-		return this.routeDataSource().getLogWriter();
+		return this.routeGroupDataSource().getLogWriter();
 	}
 	
 	public void setLogWriter(PrintWriter out) throws SQLException {
-		 this.routeDataSource().setLogWriter(out);
+		 this.routeGroupDataSource().setLogWriter(out);
 	}
 
 	public void setLoginTimeout(int seconds) throws SQLException {
-		this.routeDataSource().setLoginTimeout(seconds);
+		this.routeGroupDataSource().setLoginTimeout(seconds);
 	}
 
 	public int getLoginTimeout() throws SQLException {
-		return this.routeDataSource().getLoginTimeout();
+		return this.routeGroupDataSource().getLoginTimeout();
 	}
 
 	public <T> T unwrap(Class<T> iface) throws SQLException {
-		return this.routeDataSource().unwrap(iface);
+		return this.routeGroupDataSource().unwrap(iface);
 	}
 
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		return this.routeDataSource().isWrapperFor(iface);
+		return this.routeGroupDataSource().isWrapperFor(iface);
 	}
 
 	public Connection getConnection() throws SQLException {
-		return this.routeDataSource().getConnection();
+		return this.routeGroupDataSource().getConnection();
 	}
 
 	public Connection getConnection(String username, String password)
@@ -59,7 +64,7 @@ public class MultipleGroupDataSourse implements DataSource {
 		return this.getConnection(username, password);
 	}
 
-	private DataSource routeDataSource(){
+	private DataSource routeGroupDataSource(){
 		IDBRoute route = shardContext.get(Constant.CURRENT_DB_ROUTE);
 		if(null == route){
 			throw new RuntimeException("current IDBRoute is null,pelese put current Route into shardContext");
@@ -68,7 +73,10 @@ public class MultipleGroupDataSourse implements DataSource {
 		if(dataSource ==  null){
 			throw new RuntimeException(String.format("dataSource: dbGroupName [%s] is null", route.getDBGroupName()));
 		}
-		System.out.println("--info---> DBGroupName routed tagert is : :"+ route.getDBGroupName());
+		if (logger.isInfoEnabled()) {
+			logger.info("MultipleGroupDataSourse Routing DBGroupName routed tagert is : :"+ route.getDBGroupName());
+		}
+		
 		return dataSource;
 	}
 

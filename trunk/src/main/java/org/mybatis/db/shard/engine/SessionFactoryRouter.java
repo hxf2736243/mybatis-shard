@@ -36,7 +36,6 @@ public class SessionFactoryRouter {
 	}
 	
 	private SessionFactoryRouter(String resoucePath,String... dbShardNames){
-		
 		for(String dbName : dbShardNames){
 			try {
 				Reader reader = Resources.getResourceAsReader(resoucePath);
@@ -46,7 +45,6 @@ public class SessionFactoryRouter {
 				throw new  RuntimeException(e);
 			}
 		}
-		
 	}
 	
 	
