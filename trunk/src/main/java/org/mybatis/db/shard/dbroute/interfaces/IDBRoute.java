@@ -12,25 +12,6 @@ public interface IDBRoute {
 
 	/**
 	 * 
-	 * @Title: isGoMaster
-	 * @Description: TODO
-	 * @return boolean
-	 * @throws
-	 */
-	boolean isGoMaster();
-
-	/**
-	 * 
-	 * @Title: setGoMaster
-	 * @Description: TODO
-	 * @param GoMaster
-	 *            void
-	 * @throws
-	 */
-	void setGoMaster(boolean GoMaster);
-
-	/**
-	 * 
 	 * @Title: getDBName
 	 * @Description: 获取数据库集群名称，如果不是集群此处是库名
 	 * @return String

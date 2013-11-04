@@ -1,7 +1,5 @@
 package org.mybatis.db.shard.dbroute.impl;
 
-import java.text.DecimalFormat;
-
 import org.apache.commons.lang.StringUtils;
 import org.mybatis.db.shard.common.SymbolConstant;
 
