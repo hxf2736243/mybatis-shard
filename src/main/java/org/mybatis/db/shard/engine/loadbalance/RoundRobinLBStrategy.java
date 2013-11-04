@@ -27,7 +27,7 @@ public class RoundRobinLBStrategy<T> implements LBStrategy<T> {
 	 */
 	public T nextWrite(List<T> writeableGroup) {
 		
-		if(writeCursor > writeableGroup.size() || writeCursor < 0){
+		if(writeCursor >= writeableGroup.size() || writeCursor < 0){
 			writeCursor = 0;
 		}
 		return writeableGroup.get(writeCursor++);
@@ -38,10 +38,10 @@ public class RoundRobinLBStrategy<T> implements LBStrategy<T> {
 	 * 
 	 */
 	public T nextRead(List<T> readableGroup) {
-		if(readCursor > readableGroup.size() || readCursor < 0){
+		if(readCursor >= readableGroup.size() || readCursor < 0){
 			readCursor = 0;
 		}
-		return readableGroup.get(readCursor);
+		return readableGroup.get(readCursor++);
 	}
 
 }

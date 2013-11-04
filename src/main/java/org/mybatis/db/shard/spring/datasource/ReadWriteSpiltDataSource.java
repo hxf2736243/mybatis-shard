@@ -11,7 +11,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  * @date 2013-10-31 下午5:11:18 
  *
  */
-public class DefaultDataSource extends DriverManagerDataSource implements ReadWriteAble {
+public class ReadWriteSpiltDataSource extends DriverManagerDataSource implements ReadWriteAble {
 
 	/**
 	 * 标示数据源是否可读；默认可读，值为：“true”

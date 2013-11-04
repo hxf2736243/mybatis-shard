@@ -3,7 +3,7 @@ package org.mybatis.db.shard.dbroute.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.mybatis.db.shard.dbroute.interfaces.IDBRoute;
+import org.mybatis.db.shard.dbroute.interfaces.IRoute;
 
 /**
  * 
@@ -13,7 +13,7 @@ import org.mybatis.db.shard.dbroute.interfaces.IDBRoute;
  * @date 2013-10-30 下午12:22:59 
  *
  */
-public abstract class AbstractRoute  implements IDBRoute  {
+public  abstract class AbstractRoute  implements IRoute  {
 
 
 	/**
@@ -119,14 +119,17 @@ public abstract class AbstractRoute  implements IDBRoute  {
 		this.tableNamePostfixFormat = tableNamePostfixFormat;
 	}
 
-	boolean isGoMaster = false;
-	public boolean isGoMaster() {
-		return isGoMaster;
+	boolean isGoReadGroup = false;
+
+	public boolean isGoReadGroup() {
+		return isGoReadGroup;
 	}
 
-	public void setGoMaster(boolean isGoMaster) {
-		this.isGoMaster = isGoMaster;
+
+	public void setGoReadGroup(boolean isGoReadGroup) {
+		this.isGoReadGroup = isGoReadGroup;
 	}
+
 
 
 }

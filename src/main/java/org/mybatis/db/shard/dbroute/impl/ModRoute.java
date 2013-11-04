@@ -115,7 +115,7 @@ public class ModRoute extends AbstractRoute{
 
 	
 	public String toString() {		
-		return "db:["+getDBGroupName()+"] table:["+getTableName()+"] routeConfig:["+routeConfig+"] isGoMater:["+this.isGoMaster()+"]routeRuleMap:"+routeRuleMap.toString();
+		return "db:["+getDBGroupName()+"] table:["+getTableName()+"] routeConfig:["+routeConfig+"] isGoReadGroup:["+this.isGoReadGroup()+"]routeRuleMap:"+routeRuleMap.toString();
 	}
 
 	public long getRouteId() {
