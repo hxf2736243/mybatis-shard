@@ -6,9 +6,9 @@ package org.mybatis.db.shard.engine;
 import java.sql.Connection;
 import java.util.Properties;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.executor.statement.StatementHandler;
-import org.apache.ibatis.logging.Log;
-import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
@@ -28,7 +28,8 @@ import org.mybatis.db.util.SqlUtils;
 @Intercepts( { @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class })})
 public class SQLPrintPlugin implements Interceptor {
 	
-	private static final Log log = LogFactory.getLog(SQLPrintPlugin.class);
+	/** Logger available to subclasses */
+	protected final Log logger = LogFactory.getLog(getClass());
 
 	public Object intercept(Invocation invocation) throws Throwable {
 		try{
@@ -49,7 +50,7 @@ public class SQLPrintPlugin implements Interceptor {
 	
 	private void before(Invocation invocation){
 		StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
-		System.out.println("SQL:"+SqlUtils.format(statementHandler.getBoundSql().getSql()));
+		logger.info("SQL:"+SqlUtils.format(statementHandler.getBoundSql().getSql()));
 	}
 	
 	private void after(Invocation invocation){

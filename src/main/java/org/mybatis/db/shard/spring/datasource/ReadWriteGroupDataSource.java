@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.mybatis.db.shard.datasourse.interfaces.ReadWriteAble;
 import org.mybatis.db.shard.engine.interfaces.IDataSourceKeyRouter;
 import org.mybatis.db.util.ForceReflectionUtils;
@@ -18,13 +20,15 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
  *
  */
 public class ReadWriteGroupDataSource extends AbstractRoutingDataSource {
-
+	/** Logger available to subclasses */
+	protected final Log logger = LogFactory.getLog(getClass());
+	
 	private IDataSourceKeyRouter<String> dataSourceKeyRouter;
 	
 	@Override
 	protected Object determineCurrentLookupKey() {
 		String dbKey =dataSourceKeyRouter.getKey();
-		System.out.println("--info---> dataSourceKeyRouter ReadWriteGroupDataSource["+dbKey+"] routed tagert is ");
+		logger.info("ReadWriteGroupDataSource.dataSourceKeyRouter ReadWriteGroupDataSource["+dbKey+"] routed tagert is ");
 		return dbKey;
 	}
 	
@@ -71,6 +75,10 @@ public class ReadWriteGroupDataSource extends AbstractRoutingDataSource {
 		}
 		dataSourceKeyRouter.setReadKeys(readKeys);
 		dataSourceKeyRouter.setWriteKeys(writeKeys);
+		if (logger.isInfoEnabled()) {
+			logger.info("ReadWriteGroupDataSource classifyReadWriteDataSourceKeys readKeys :"+readKeys);
+			logger.info("ReadWriteGroupDataSource classifyReadWriteDataSourceKeys writeKeys:"+writeKeys);
+		}
 	}
 
 	public void setDataSourceKeyRouter(
