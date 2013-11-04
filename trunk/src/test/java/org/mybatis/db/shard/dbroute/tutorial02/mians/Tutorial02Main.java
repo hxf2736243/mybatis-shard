@@ -22,9 +22,10 @@ public class Tutorial02Main {
 	 * @throws 
 	 */
 	public static void main(String[] args) {
-        ApplicationContext ctx=null;  
-        
-        ctx=new ClassPathXmlApplicationContext("org/mybatis/db/shard/dbroute/tutorial02/config/applicationContext.xml");  
+		
+		String springConfigPath = "org/mybatis/db/shard/dbroute/tutorial02/config/applicationContext.xml";
+		
+        ApplicationContext ctx= new ClassPathXmlApplicationContext(springConfigPath);  
         
         UserDao userDao= (UserDao) ctx.getBean("userDao");
         for(long i=0 ; i<6 ; i++){

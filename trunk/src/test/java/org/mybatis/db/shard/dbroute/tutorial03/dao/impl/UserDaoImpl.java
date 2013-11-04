@@ -1,4 +1,4 @@
-package org.mybatis.db.shard.dbroute.tutorial02.dao.impl;
+package org.mybatis.db.shard.dbroute.tutorial03.dao.impl;
 
 import javax.annotation.Resource;
 
