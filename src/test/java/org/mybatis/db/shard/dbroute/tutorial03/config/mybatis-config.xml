@@ -8,7 +8,7 @@
 	<typeAliases>
 		<typeAlias alias="param" type="org.mybatis.db.shard.common.RouteParam"/>
 		<typeAlias alias="hashMap" type="java.util.HashMap"/>
-		<typeAlias alias="user" type="org.mybatis.db.shard.dbroute.tutorial02.po.User"/>
+		<typeAlias alias="user" type="org.mybatis.db.shard.dbroute.tutorial03.po.User"/>
 	</typeAliases>
 	
 	<plugins>
@@ -17,7 +17,7 @@
 	
 	<!-- ORM映射文件 -->
 	<mappers>
-		<mapper resource="org/mybatis/db/shard/dbroute/tutorial02/po/UserSqlMap.xml" />
+		<mapper resource="org/mybatis/db/shard/dbroute/tutorial03/po/UserSqlMap.xml" />
 	</mappers>
 	
 	
