@@ -1,3 +1,5 @@
+#summary 第一个教程-ModRoute设计与使用
+
 = 教程01-介绍 =
 本教程介绍此框架的第一个教程，也是入门教程。主要介绍如何使用一个现实了<code language="java">IRoute</code>
 接口的类<code language="java">ModRoute</code>ModRoute设计和实现依赖没任何Mybatis和Spring的接口。从这个简单实现你可以看出此框架基石的端倪
