@@ -16,8 +16,8 @@ http://img02.taobaocdn.com/bao/uploaded/i2/14839030322003106/T1Ze7AFmNaXXXXXXXX_
 http://img01.taobaocdn.com/bao/uploaded/i1/14839030178111439/T1MxIXFkddXXXXXXXX_!!723064839-2-pix.png_300x300.jpg<br/>
 图二：<br/>
 http://img02.taobaocdn.com/bao/uploaded/i2/14839030173082978/T1.EgwFc8aXXXXXXXX_!!723064839-2-pix.png_300x300.jpg<br/>
-图一图二所表示的就是最常用的分库分表方式，<br/>图例用id对128取模，模在0到63在user_0上,落在63到127区间就在user_1库上，而分表就是落在名为{user_模}表上。取模能在一定程度上保质数据均匀散列在各个分表上。从而将数据库的压力分散到各个库表中。
-
+图一图二所表示的就是最常用的分库分表方式，<br/>图例用id对128取模，模在0到63在user_0上,落在63到127区间就在user_1库上，<br/>而分表就是落在名为{user_模}表上。<br/>取模能在一定程度上保质数据均匀散列在各个分表上。从而将数据库的压力分散到各个库表中。
+<br/>
 == 2、设计思想、继承关系== 
 
 
