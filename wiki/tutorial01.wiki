@@ -12,8 +12,10 @@ http://img02.taobaocdn.com/bao/uploaded/i2/14839030322003106/T1Ze7AFmNaXXXXXXXX_
    * 数据库集群系统
    * 负载均衡系统
 当然还有其他小板斧，但这三个是主要的（如果不对请各位见谅）BAT（baidu/Alibaba/Tencent）三个寡头都有自己的一套利器和标准，但原理都是一样的。概括一句话：划分而治。貌似扯远了，回归正题三板斧中有一板斧叫“*数据库集群系统*”，其基本思想是基就要把一个数据库切分成多个部分放到不同的数据库(server)上，从而缓解单一数据库的性能问题。其中有数据库横切（水平切分）和纵切（垂直切分），关于切分在CSDN有相关同志已经写了相当详细的介绍，如：[http://blog.csdn.net/column/details/sharding.html 数据库分库分表系列]。每个业务都有不同的设计来应对各种复杂的环境和流量，本处举个简单的实例：<br/>
+（图一）
 http://img01.taobaocdn.com/bao/uploaded/i1/14839030178111439/T1MxIXFkddXXXXXXXX_!!723064839-2-pix.png_300x300.jpg
 
+（图二）
 http://img02.taobaocdn.com/bao/uploaded/i2/14839030173082978/T1.EgwFc8aXXXXXXXX_!!723064839-2-pix.png_300x300.jpg
 
 
