@@ -21,5 +21,7 @@ http://img01.taobaocdn.com/bao/uploaded/i1/14839030662043263/T17qIQFaxdXXXXXXXX_
 {{{svn checkout http://mybatis-shard.googlecode.com/svn/trunk}}}
    === 编译源码 ===
 你需要安装[http://maven.apache.org/ Maven]和[http://www.oracle.com/technetwork/java/javase/downloads/index.html JDK1.6]。然后用下面的命令编译所有的源代码：
+{{{
 cd mybatis-shard
 mvn clean install
+}}}
