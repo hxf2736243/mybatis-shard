@@ -57,8 +57,59 @@ modRoute.getTableName()得到的表名是“_0000”格式类型的分表结尾�
 （2）分表名结尾格式符非必配，可如下：<br/>
 {{{user_info.id%16={0~7:user1;8~15:user2}}}}<br/>
 modRoute.getTableName()得到的表名永远是“user_info”。<br/>
-<br/>或<br/>
+或<br/>
 {{{id%16={0~7:user1;8~15:user2}}}}<br/>
 modRoute.getTableName()得到的表名永远是“”。
 
 == 4、使用说明、举例==
+{{{
+public static void main(String[] args) throws Exception {
+	//分表分库
+	ModRoute modRoute = new ModRoute();
+	System.out.println("分表分库配置user_info.id%4={0~1:user1;2~3:user2}#_%04d:");
+	modRoute.parseRouteConfig("user_info.id%4={0~1:user1;2~3:user2}#_%04d");
+	for (int i = 0; i < 8; i++) {
+		modRoute.setRouteId(i);
+		System.out.print(String.format("id = %02d -->",i));
+		System.out.print(String.format("TableName   is %s ", modRoute.getTableName()));
+		System.out.print(String.format("DBGroupName is %s", modRoute.getDBGroupName()));
+		System.out.println();
+	}
+	
+	System.out.println("只分库不分表配置user_info.id%4={0~1:user1;2~3:user2}:");
+	//只分库不分表
+	ModRoute modRoute2=new ModRoute();
+	modRoute2.parseRouteConfig("user_info.id%4={0~1:user1;2~3:user2}");
+	for (int i = 0; i < 8; i++) {
+		modRoute2.setRouteId(i);
+		System.out.print(String.format("id = %02d -->",i));
+		System.out.print(String.format("TableName   is %s ", modRoute2.getTableName()));
+		System.out.print(String.format("DBGroupName is %s", modRoute2.getDBGroupName()));
+		System.out.println();
+	}
+	
+}
+}}}
+
+得到的结果：
+{{{
+分表分库配置user_info.id%4={0~1:user1;2~3:user2}#_%04d:
+id = 00 -->TableName   is user_info_0000 DBGroupName is user1
+id = 01 -->TableName   is user_info_0001 DBGroupName is user1
+id = 02 -->TableName   is user_info_0002 DBGroupName is user2
+id = 03 -->TableName   is user_info_0003 DBGroupName is user2
+id = 04 -->TableName   is user_info_0000 DBGroupName is user1
+id = 05 -->TableName   is user_info_0001 DBGroupName is user1
+id = 06 -->TableName   is user_info_0002 DBGroupName is user2
+id = 07 -->TableName   is user_info_0003 DBGroupName is user2
+
+只分库不分表配置user_info.id%4={0~1:user1;2~3:user2}:
+id = 00 -->TableName   is user_info DBGroupName is user1
+id = 01 -->TableName   is user_info DBGroupName is user1
+id = 02 -->TableName   is user_info DBGroupName is user2
+id = 03 -->TableName   is user_info DBGroupName is user2
+id = 04 -->TableName   is user_info DBGroupName is user1
+id = 05 -->TableName   is user_info DBGroupName is user1
+id = 06 -->TableName   is user_info DBGroupName is user2
+id = 07 -->TableName   is user_info DBGroupName is user2
+}}}
