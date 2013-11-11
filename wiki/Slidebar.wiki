@@ -11,5 +11,4 @@
       * [LBStrategyDesign   LBStrategyDesign]
       * [IShardThreadContextDesign   IShardThreadContextDesign]
       * [MapperManagerDesign   MapperManagerDesign]
-
   * [FAQ  FAQ]
