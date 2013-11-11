@@ -6,9 +6,11 @@
 public static void main(String[] args) throws Exception {
 	ModRoute modRoute = new ModRoute();
 	modRoute.parseRouteConfig("user_info.id%16={0~7:user1;8~15:user2}#_%04d");
+	
 	modRoute.setRouteId(246L);
 	System.out.println(String.format("246L -> TableName   is : %s ",modRoute.getTableName()));
 	System.out.println(String.format("246L -> DBGroupName is : %s ",modRoute.getDBGroupName()));
+	
 	modRoute.setRouteId(249L);
 	System.out.println(String.format("249L -> TableName   is : %s ",modRoute.getTableName()));
 	System.out.println(String.format("249L -> DBGroupName is : %s ",modRoute.getDBGroupName()));
@@ -45,4 +47,10 @@ http://img02.taobaocdn.com/bao/uploaded/i2/14839030322003106/T1Ze7AFmNaXXXXXXXX_
 
 http://img04.taobaocdn.com/bao/uploaded/i4/14839042866824365/T1UxEQFjhdXXXXXXXX_!!723064839-2-pix.png_570x10000.jpg<br/>
 
-== 3、使用说明、举例== 
+== 3、配置说明、举例==
+此处的配置说明是解释ModRoute默认实现的说明，如果不满足应该需求你可以自行修改<br/>
+“user_info.id%16={0~7:user1;8~15:user2}#_%04d”此路由配置是作为我解释的一个实例说明。<br/> 上述配置表示user_info表字段id对16取模，得到结果如果是0到7在库user1上，8到15在库user2上,分表名结尾以模数4位补齐，<br/>
+
+
+
+== 4、使用说明、举例==
