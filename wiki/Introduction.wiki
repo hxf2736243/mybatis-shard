@@ -11,6 +11,14 @@ mybatis-shard是一个基于mybatis spring 的分库分表框架，它可用来�
 如图说明：<br>
 http://img01.taobaocdn.com/bao/uploaded/i1/14839030662043263/T17qIQFaxdXXXXXXXX_!!723064839-2-pix.png_570x10000.jpg
 
-== 开始工作 ==
 
 == 参与开发 ==
+   === 浏览源码 ===
+    mybatis-shard的源码被托管在google code。你可以从浏览器中直接查看mybatis-shard的全部源代码<br>：
+{{{http://code.google.com/p/mybatis-shard/source/browse/}}}
+  
+   === 取得源码 ===
+   你需要安装[http://tortoisesvn.net/downloads.html SVN]。然后用下面的命令取得所有可编译的源代码：
+{{{svn checkout http://mybatis-shard.googlecode.com/svn/trunk}}}
+
+   === 编译源码 ===
