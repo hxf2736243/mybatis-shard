@@ -24,7 +24,7 @@ http://img02.taobaocdn.com/bao/uploaded/i2/14839030322003106/T1Ze7AFmNaXXXXXXXX_
 http://img04.taobaocdn.com/bao/uploaded/i4/14839042866824365/T1UxEQFjhdXXXXXXXX_!!723064839-2-pix.png_570x10000.jpg<br/>
 
 == 3、使用说明、举例== 
-使用ModRoute只需关注路由配置 和 路由ID。
+使用ModRoute只需关注路由配置 和 路由ID。如下：
 {{{
 public static void main(String[] args) throws Exception {
 	ModRoute modRoute = new ModRoute();
@@ -36,4 +36,11 @@ public static void main(String[] args) throws Exception {
 	System.out.println(String.format("249L -> TableName   is : %s ",modRoute.getTableName()));
 	System.out.println(String.format("249L -> DBGroupName is : %s ",modRoute.getDBGroupName()));
 }
+}}}
+上面程序得到的结果是：<br/>
+{{{
+246L -> TableName   is : user_info_0006 
+246L -> DBGroupName is : user1 
+249L -> TableName   is : user_info_0009 
+249L -> DBGroupName is : user2 
 }}}
