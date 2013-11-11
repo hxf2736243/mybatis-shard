@@ -7,11 +7,29 @@
 ==映射路由分库分表配置说明如下：==
 * 配置一：
 {{{
-user_info.unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx
+user_info.unitPosId={beijing:user_bj;nanchang:user_nc}
 表示user_info对分库字段unitPosId做映射，
-映射关系是99在库user0上，100在库user1上，101在库user2上
+映射关系是beijing在库user_bj上，nanchang在库user_nc上
 调用MapRoute.getTableName()会带上user_info
 }}}
+{{{
+public static void main(String[] args) throws Exception {
+	final String ruleConfig2 = "user_info.unitPosId={beijing:user_bj;nanchang:user_nc}";
+	MapRoute mapRoute2 = new MapRoute();
+	mapRoute2.parseRouteConfig(ruleConfig2);
+	
+	System.out.println("分表分库配置"+ruleConfig2);
+	for (Map.Entry<String, String> e: mapRoute2.getRouteRuleMap().entrySet()) {
+		mapRoute2.setRouteId(e.getKey());
+		
+		System.out.print(String.format("routeId = %s -->",e.getKey()));
+		System.out.print(String.format("TableName   is %s ", mapRoute2.getTableName()));
+		System.out.print(String.format("DBGroupName is %s",  mapRoute2.getDBGroupName()));
+		System.out.println();
+	}
+}
+}}}
+
 
 * 配置二：
 {{{
