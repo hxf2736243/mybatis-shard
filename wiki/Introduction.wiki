@@ -3,10 +3,10 @@
 
 == mybatis-shard 是什么 ==
 mybatis-shard是一个基于mybatis spring 的分库框架，它可用来做下面的事情：<br>
-* 数据库分表
-* 数据库分库
-* 数据库读写分离
-* 数据库多DB路由
+*  数据库分表
+*  数据库分库
+*  数据库读写分离
+*  数据库多DB路由
 
 如图说明：<br>
 http://img01.taobaocdn.com/bao/uploaded/i1/14839030662043263/T17qIQFaxdXXXXXXXX_!!723064839-2-pix.png_570x10000.jpg
