@@ -23,7 +23,8 @@ unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}
 
 
 * 配置三：
-{{{user_info.unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}#_%s
+{{{
+user_info.unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}#_%s
 表示user_info对分库字段unitPosId做映射，
 映射关系是99在库user0上，100在库user1上，101在库user2上,并且分表名是key值结尾
 调用MapRoute.getTableName()会会带上user_info并以下划线和unitPosId结尾，如：user_info_99
@@ -31,7 +32,8 @@ unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}
 
 
 * 配置四： 
-{{{ unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}#_%s
+{{{ 
+unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}#_%s
 表示user_info对分库字段unitPosId做映射，
 映射关系是99在库user0上，100在库user1上，101在库user2上,并且分表名是key值结尾<
 调用MapRoute.getTableName()会不会带上user_info并以下划线和unitPosId结尾，如：_99
@@ -40,8 +42,7 @@ unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}
 
 
 
-使用如下：<br>
-
+* 使用如下：
 {{{
 public static void main(String[] args) throws Exception {
 	final String ruleConfig = "user_info.unitPosId={beijing:user_bj;nanchang:user_nc}#_%s";
