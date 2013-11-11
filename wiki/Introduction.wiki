@@ -9,7 +9,7 @@ mybatis-shard是一个基于mybatis spring 的分库分表框架，它可用来�
  * 数据库多DB路由
 
 如图说明：<br>
-http://img01.taobaocdn.com/bao/uploaded/i1/14839030662043263/T17qIQFaxdXXXXXXXX_!!723064839-2-pix.png_500x500.jpg
+http://img01.taobaocdn.com/bao/uploaded/i1/14839030662043263/T17qIQFaxdXXXXXXXX_!!723064839-2-pix.png_570x10000.jpg
 
 == 开始工作 ==
 
