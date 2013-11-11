@@ -29,6 +29,12 @@ public static void main(String[] args) throws Exception {
 	}
 }
 }}}
+结果：
+{{{
+分表分库配置user_info.unitPosId={beijing:user_bj;nanchang:user_nc}
+routeId = nanchang -->TableName   is user_info DBGroupName is user_nc
+routeId = beijing -->TableName   is user_info DBGroupName is user_bj
+}}}
 
 
 * 配置二：
