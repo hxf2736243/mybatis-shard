@@ -14,13 +14,15 @@ public static void main(String[] args) throws Exception {
 	System.out.println(String.format("249L -> DBGroupName is : %s ",modRoute.getDBGroupName()));
 }
 }}}
-上面程序得到的结果是：<br/>
+上面程序得到的结果是：
 {{{
 246L -> TableName   is : user_info_0006 
 246L -> DBGroupName is : user1 
 249L -> TableName   is : user_info_0009 
 249L -> DBGroupName is : user2 
 }}}
+TableName 表示是表名，DBGroupName可以暂时理解为库名（后面教程会详细说明）。<br/> 
+如果你对上述程序很面熟或者很好懂，那么下面的介绍可以跳过。
 
 = 本教程章节： =
 http://img02.taobaocdn.com/bao/uploaded/i2/14839030322003106/T1Ze7AFmNaXXXXXXXX_!!723064839-2-pix.png_300x300.jpg
