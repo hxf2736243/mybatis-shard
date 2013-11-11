@@ -16,7 +16,7 @@ public class DBRouteUtilsTest {
 	 */
 	public static void main(String[] args) {
 
-		String key = "mybatis.shard.tutorial02.user";
+		String key = "dbRouteUtilsTest.user";
 		String conf = "org.mybatis.db.shard.dbroute.impl.ModRoute[id%4={0~1:shard_01;2~3:shard_02}#_%04d]";
 		Map<String,String> por = new HashMap<String,String>();
 		por.put(key,conf);

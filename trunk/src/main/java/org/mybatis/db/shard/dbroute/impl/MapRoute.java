@@ -12,6 +12,9 @@ import org.mybatis.db.shard.common.SymbolConstant;
  * 配置：user_info.unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}<br>
  * 		表示user_info对分库字段unitPosId做映射，<br>
  * 		映射关系是99在库user0上，100在库user1上，101在库user2上<br>
+ *      user_info.unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}#_%s<br>
+ * 		表示user_info对分库字段unitPosId做映射，<br>
+ * 		映射关系是99在库user0上，100在库user1上，101在库user2上,并且分表名是key值结尾<br>
  * @author huhailiang(javadeeper@gmail.com)  
  * @date 2013-10-29 下午4:40:28 
  *
@@ -70,7 +73,6 @@ public class MapRoute extends AbstractRoute {
 				if(routeRes.length>=2){
 					tableNamePostfixFormat =  routeRes[1];
 				}
-				
 			}else {
 				throw new Exception("invalid routeConfig:" + routeConfig);
 			}
