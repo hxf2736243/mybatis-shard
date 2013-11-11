@@ -7,8 +7,9 @@
   * [AboutShardDesign   AboutShardDesign]
       * [IRouteDesign   IRouteDesign]
       * [DataSourseDesign  DataSourseDesign]
-      * [IShardThreadContextDesign   IShardThreadContextDesign]
-      * [LBStrategyDesign   LBStrategyDesign]
-      * [MapperManagerDesign   MapperManagerDesign]
       * [DataSourceKeyRouterDesign   DataSourceKeyRouterDesign]
+      * [LBStrategyDesign   LBStrategyDesign]
+      * [IShardThreadContextDesign   IShardThreadContextDesign]
+      * [MapperManagerDesign   MapperManagerDesign]
+
   * [FAQ  FAQ]
