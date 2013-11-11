@@ -8,6 +8,8 @@
 * 配置一：
 {{{
 user_info.unitPosId={beijing:user_bj;nanchang:user_nc}
+
+
 表示user_info对分库字段unitPosId做映射，
 映射关系是beijing在库user_bj上，nanchang在库user_nc上
 调用MapRoute.getTableName()会带上user_info
@@ -41,6 +43,8 @@ routeId = beijing -->TableName   is user_info DBGroupName is user_bj
 * 配置二：
 {{{
 unitPosId={beijing:user_bj;nanchang:user_nc}
+
+
 表示对字段unitPosId做映射，
 映射关系是beijing在库user_bj上，nanchang在库user_nc上
 调用MapRoute.getTableName()会带上user_info
@@ -73,6 +77,8 @@ routeId = beijing -->TableName   is "" DBGroupName is "user_bj"
 * 配置三：
 {{{
 user_info.unitPosId={beijing:user_bj;nanchang:user_nc}#_%s
+
+
 表示user_info对分库字段unitPosId做映射，
 映射关系是beijing在库user_bj，nanchang在库user_nc，并且分表名是key值结尾
 调用MapRoute.getTableName()会带上user_info并以下划线和unitPosId结尾，如：user_info_99
@@ -107,6 +113,8 @@ routeId = beijing -->TableName   is user_info_beijing DBGroupName is user_bj
 * 配置四： 
 {{{ 
 unitPosId={beijing:user_bj;nanchang:user_nc}#_%s
+
+
 表示user_info对分库字段unitPosId做映射，
 映射关系是beijing在库user_bj上，nanchang在库user_nc上，并且分表名是key值结尾，
 调用MapRoute.getTableName()会不会带上user_info并以下划线和unitPosId结尾，如：_99
