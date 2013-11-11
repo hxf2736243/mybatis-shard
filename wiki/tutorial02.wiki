@@ -10,7 +10,7 @@
 映射关系是99在库user0上，100在库user1上，101在库user2上<br>
 调用MapRoute.getTableName()会带上user_info<br>
 
-配置一：unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}<br>
+配置二：unitPosId={99:user0;100:user1;101:user2;XXXXX:userxxx}<br>
 表示对字段unitPosId做映射，<br>
 映射关系是99在库user0上，100在库user1上，101在库user2上<br>
 调用MapRoute.getTableName()会不会带上user_info<br>
@@ -28,11 +28,12 @@
 
 
 
+
 使用如下：<br>
 
 {{{
 public static void main(String[] args) throws Exception {
-	final String ruleConfig = "user_info.unitPosId={beijing:user_nanchang;nanchang:user1;101:user2;XXXXX:userxxx}#_%s";
+	final String ruleConfig = "user_info.unitPosId={beijing:user_bj;nanchang:user_nc}#_%s";
 	MapRoute mapRoute = new MapRoute();
 	mapRoute.parseRouteConfig(ruleConfig);
 	
@@ -49,9 +50,7 @@ public static void main(String[] args) throws Exception {
 }}}
 获取到如下结果：
 {{{
-分表分库配置user_info.unitPosId={beijing:user_nanchang;nanchang:user1;101:user2;XXXXX:userxxx}#_%s
-routeId = nanchang -->TableName   is user_info_nanchang DBGroupName is user1
-routeId = XXXXX -->TableName   is user_info_XXXXX DBGroupName is userxxx
-routeId = beijing -->TableName   is user_info_beijing DBGroupName is user_nanchang
-routeId = 101 -->TableName   is user_info_101 DBGroupName is user2
+分表分库配置user_info.unitPosId={beijing:user_bj;nanchang:user_nc}#_%s
+routeId = nanchang -->TableName   is user_info_nanchang DBGroupName is user_nc
+routeId = beijing -->TableName   is user_info_beijing DBGroupName is user_bj
 }}}
