@@ -10,7 +10,9 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.mybatis.db.shard.common.Constant;
 import org.mybatis.db.shard.dbroute.interfaces.IDBRoute;
+import org.mybatis.db.shard.engine.interfaces.IShardThreadContext;
 
 /**
  * 
@@ -25,9 +27,13 @@ public class SessionFactoryRouter {
 	
 	private  Map<String,SqlSessionFactory> sqlSessionRouter = new ConcurrentHashMap<String,SqlSessionFactory>();
 	
-	private  ThreadLocal<Map<String,SqlSession>> sqlSessionContext = new ThreadLocal<Map<String,SqlSession>>();
+	/**
+	 * 当前正在执行的IDBRoute
+	 */
+	public static final String CURRENT_SQL_SESSION_MAP = "$_current_sql_session_map$";
 	
-	private  ThreadLocal<IDBRoute> dbRouteContext = new ThreadLocal<IDBRoute>();
+	IShardThreadContext shardThreadContext = new DefaultThreadContext ();
+	
 	
 	private static SessionFactoryRouter instance  =  null;
 	
@@ -57,22 +63,30 @@ public class SessionFactoryRouter {
 	}
 	
 	public  SqlSessionFactory getSqlSessionFactory(){ 
-		IDBRoute route = dbRouteContext.get();
+		IDBRoute route = shardThreadContext.get(Constant.CURRENT_DB_ROUTE);
 		if(null == route){
 			throw new RuntimeException("route can not been null");
 		}
         return sqlSessionRouter.get(route.getDBGroupName());
     }
 	
+	/**
+	 * 得到一个SqlSession
+	 * @Title: getSession 
+	 * @Description: TODO
+	 * @return 
+	 * SqlSession
+	 * @throws
+	 */
 	public  SqlSession getSession(){
-		IDBRoute route = dbRouteContext.get();
+		IDBRoute route = shardThreadContext.get(Constant.CURRENT_DB_ROUTE);
 		if(null == route){
 			throw new RuntimeException("route can not been null");
 		}
-		Map<String,SqlSession> sqlSessionMap = sqlSessionContext.get();
+		Map<String,SqlSession> sqlSessionMap = shardThreadContext.get(CURRENT_SQL_SESSION_MAP);
 		if(sqlSessionMap == null  ){
 			sqlSessionMap = new HashMap<String,SqlSession>();
-			sqlSessionContext.set(sqlSessionMap);
+			shardThreadContext.put(CURRENT_SQL_SESSION_MAP, sqlSessionMap);
 		}
 		
 		SqlSession session = sqlSessionMap.get(route.getDBGroupName());
@@ -91,12 +105,19 @@ public class SessionFactoryRouter {
 		return session;
 	}
 	
+	/**
+	 * 关闭当前sqlsession
+	 * @Title: closeSession 
+	 * @Description: TODO 
+	 * void
+	 * @throws
+	 */
 	public  void closeSession(){
-		IDBRoute route = dbRouteContext.get();
+		IDBRoute route = shardThreadContext.get(Constant.CURRENT_DB_ROUTE);
 		if(null == route){
 			return ;
 		}
-		Map<String,SqlSession> sqlSessionMap = sqlSessionContext.get();
+		Map<String,SqlSession> sqlSessionMap = shardThreadContext.get(CURRENT_SQL_SESSION_MAP);
 		if(null == sqlSessionMap ){
 			return ;
 		}
@@ -110,20 +131,15 @@ public class SessionFactoryRouter {
 		
 		session.close();
 	}
-	
+	/**
+	 * 清理当前线程绑定的变量
+	 * @Title: clear 
+	 * @Description: TODO 
+	 * void
+	 * @throws
+	 */
 	public  void clear(){
-		Map<String,SqlSession> sqlSessionMap = sqlSessionContext.get();
-		if(null == sqlSessionMap ){
-			return ;
-		}
-		sqlSessionContext.set(null);
-		
-		for(Map.Entry<String,SqlSession> entry : sqlSessionMap.entrySet()){
-			try{
-				entry.getValue().close();
-			}catch(Exception e){
-			}
-		}
+		shardThreadContext.destory();
 	}
 	
 	
@@ -133,7 +149,7 @@ public class SessionFactoryRouter {
 
     
     public  void setCurrent(IDBRoute route){
-    	dbRouteContext.set(route);
+    	shardThreadContext.put(Constant.CURRENT_DB_ROUTE, route);
     }
 	
 }

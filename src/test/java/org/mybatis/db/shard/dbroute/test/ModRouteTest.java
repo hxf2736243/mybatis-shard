@@ -4,40 +4,41 @@ import org.mybatis.db.shard.dbroute.impl.ModRoute;
 
 public class ModRouteTest {
 
-	/** 
+	/**
+	 * @throws Exception  
 	 * @Title: main 
 	 * @Description: TODO
 	 * @param @param args 
 	 * @return void
 	 * @throws 
 	 */
-	public static void main(String[] args) {
-		//分表分库
-		ModRoute m=new ModRoute();
-		try {
-			m.parseRouteConfig("user_info.id%16={0~7:user1;8~15:user2}#_%04d");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		for (int i = 0; i < 16; i++) {
-			m.setRouteId(i);
-			System.out.println( m.getTableName() +"--->"+ m.getDBGroupName() );
-		}
-		
-		//只分库不分表
-		ModRoute m2=new ModRoute();
-		try {
-			m2.parseRouteConfig("user_info.id%16={0~7:user1;8~15:user2}");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		for (int i = 0; i < 16; i++) {
-			m2.setRouteId(i);
-			System.out.println( m2.getTableName() +"--->"+ m2.getDBGroupName() );
-		}
-		
+public static void main(String[] args) throws Exception {
+	//分表分库
+	ModRoute modRoute = new ModRoute();
+	System.out.println("分表分库配置user_info.id%4={0~1:user1;2~3:user2}#_%04d:");
+	modRoute.parseRouteConfig("user_info.id%4={0~1:user1;2~3:user2}#_%04d");
+	for (int i = 0; i < 8; i++) {
+		modRoute.setRouteId(i);
+		System.out.print(String.format("id = %02d -->",i));
+		System.out.print(String.format("TableName   is %s ", modRoute.getTableName()));
+		System.out.print(String.format("DBGroupName is %s", modRoute.getDBGroupName()));
+		System.out.println();
 	}
+	
+	System.out.println("只分库不分表配置user_info.id%4={0~1:user1;2~3:user2}:");
+	//只分库不分表
+	ModRoute modRoute2=new ModRoute();
+	modRoute2.parseRouteConfig("user_info.id%4={0~1:user1;2~3:user2}");
+	for (int i = 0; i < 8; i++) {
+		modRoute2.setRouteId(i);
+		System.out.print(String.format("id = %02d -->",i));
+		System.out.print(String.format("TableName   is %s ", modRoute2.getTableName()));
+		System.out.print(String.format("DBGroupName is %s", modRoute2.getDBGroupName()));
+		System.out.println();
+	}
+	
+}
+	
+	
 
 }
