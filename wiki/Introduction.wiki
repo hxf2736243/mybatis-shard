@@ -3,7 +3,7 @@
 
 == mybatis-shard 是什么 ==
 mybatis-shard是一个基于mybatis spring 的分库分表框架，它可用来做下面的事情：<br>
- * 数据库 <FONT COLOR =#FF0000> 分表</FONT>
+ * 数据库*分表*
  * 数据库分库
  * 数据库读写分离
  * 数据库多DB路由
