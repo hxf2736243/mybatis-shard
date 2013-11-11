@@ -26,9 +26,14 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839042866824365/T1UxEQFjhdXXXXXXXX_
 == 3、使用说明、举例== 
 使用ModRoute只需关注路由配置 和 路由ID。
 {{{
-ModRoute modRoute = new ModRoute();
-modRoute.parseRouteConfig("user_info.id%16={0~7:user1;8~15:user2}#_%04d");
-modRoute.setRouteId(246L);
-System.out.println(String.format("TableName is %s ",modRoute.getTableName()));
-System.out.println(String.format("DBGroupName is %s",modRoute.getDBGroupName()));
+public static void main(String[] args) throws Exception {
+	ModRoute modRoute = new ModRoute();
+	modRoute.parseRouteConfig("user_info.id%16={0~7:user1;8~15:user2}#_%04d");
+	modRoute.setRouteId(246L);
+	System.out.println(String.format("246L -> TableName   is : %s ",modRoute.getTableName()));
+	System.out.println(String.format("246L -> DBGroupName is : %s ",modRoute.getDBGroupName()));
+	modRoute.setRouteId(249L);
+	System.out.println(String.format("249L -> TableName   is : %s ",modRoute.getTableName()));
+	System.out.println(String.format("249L -> DBGroupName is : %s ",modRoute.getDBGroupName()));
+}
 }}}
