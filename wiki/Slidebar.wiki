@@ -11,6 +11,6 @@
       * [IShardThreadContextDesign   IShardThreadContextDesign]
       * [LBStrategyDesign   LBStrategyDesign]
       * [MapperManagerDesign   MapperManagerDesign]
-      * [MapperManagerDesign   MapperManagerDesign]
+      * [DataSourceKeyRouterDesign   DataSourceKeyRouterDesign]
 
   * [FAQ  FAQ]
