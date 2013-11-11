@@ -1,4 +1,5 @@
 #summary 第一个教程-ModRoute设计与使用
+#labels Phase-Implementation
 
 = 教程01-ModRoute设计与使用 =
 本教程介绍此框架的第一个教程，也是入门教程。主要介绍如何使用一个现实了IRoute接口的ModRoute类。<br/> 此类设计和实现依赖没任何Mybatis和Spring的接口。从这个简单实现你可以看出此框架基石的端倪。先看看如下程序：
