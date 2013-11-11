@@ -51,10 +51,14 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839042866824365/T1UxEQFjhdXXXXXXXX_
 此处的配置说明是解释ModRoute默认实现的说明，如果不满足应该需求你可以自行修改<br/>
 “user_info.id%16={0~7:user1;8~15:user2}#_%04d”此路由配置是作为我解释的一个实例说明。<br/> 上述配置表示user_info表字段id对16取模，得到结果如果是0到7在库user1上，8到15在库user2上,分表名结尾以模数4位补齐，<br/>
 （1）上述规则表名非必配，可如下：<br/>
-{{{id%16={0~7:user1;8~15:user2}#_%04d}}}
+{{{id%16={0~7:user1;8~15:user2}#_%04d}}}<br/>
+modRoute.getTableName()得到的表名是“_0000”格式类型的分表结尾符。
 
 （2）分表名结尾格式符非必配，可如下：<br/>
-{{{user_info.id%16={0~7:user1;8~15:user2}}}}或
-{{{id%16={0~7:user1;8~15:user2}}}}
+{{{user_info.id%16={0~7:user1;8~15:user2}}}}<br/>
+modRoute.getTableName()得到的表名永远是“user_info”。<br/>
+<br/>或<br/>
+{{{id%16={0~7:user1;8~15:user2}}}}<br/>
+modRoute.getTableName()得到的表名永远是“”。
 
 == 4、使用说明、举例==
