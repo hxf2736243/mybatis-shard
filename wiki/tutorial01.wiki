@@ -28,6 +28,7 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839042866824365/T1UxEQFjhdXXXXXXXX_
 {{{
 ModRoute modRoute = new ModRoute();
 modRoute.parseRouteConfig("user_info.id%16={0~7:user1;8~15:user2}#_%04d");
-modRoute.setRouteId(i);
-System.out.println(String.format("TableName is %s ,DBGroupName is %s", modRoute.getTableName(),modRoute.getDBGroupName()));
+modRoute.setRouteId(246L);
+System.out.println(String.format("TableName is %s ",modRoute.getTableName()));
+System.out.println(String.format("DBGroupName is %s",modRoute.getDBGroupName()));
 }}}
