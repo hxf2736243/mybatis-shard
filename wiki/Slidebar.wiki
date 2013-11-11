@@ -5,5 +5,12 @@
       * [Tutorial03 Tutorial03]
       * [Tutorial04 Tutorial04]
 
+  * [AboutShardDesign   AboutShardDesign]
+      * [IRouteDesign   IRouteDesign]
+      * [DataSourseDesign  DataSourseDesign]
+      * [IShardThreadContextDesign   IShardThreadContextDesign]
+      * [LBStrategyDesign   LBStrategyDesign]
+      * [MapperManagerDesign   MapperManagerDesign]
+      * [MapperManagerDesign   MapperManagerDesign]
+
   * [FAQ FAQ]
- 
