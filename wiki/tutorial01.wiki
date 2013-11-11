@@ -62,7 +62,8 @@ modRoute.getTableName()得到的表名永远是“user_info”。<br/>
 modRoute.getTableName()得到的表名永远是“”。
 
 == 4、使用说明、举例==
-在http://code.google.com/p/mybatis-shard/source/browse/trunk/src/test/java/org/mybatis/db/shard/dbroute/test/MapRouteTest.java MapRouteTest.java
+在[http://code.google.com/p/mybatis-shard/source/browse/trunk/src/test/java/org/mybatis/db/shard/dbroute/test/ModRouteTest.java 代码]
+详细如下：
 {{{
 public static void main(String[] args) throws Exception {
 	//分表分库
