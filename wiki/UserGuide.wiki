@@ -29,5 +29,8 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_
      * （1）工程的默认编码方式设置
      * （2）eclipse的SVN插件subclipse安装
      * （3）eclipse的MAVEN插件m2eclipse安装
-     === 第一：默认编码方式设置 ===
-在eclipse的windows-->Preferences-->Workspace中设置为UTF-8。防止工程乱码
+   === 第一：默认编码方式设置 ===
+  在eclipse的windows-->Preferences-->Workspace中设置为UTF-8。防止工程乱码
+   === 第二：安装SVN插件   === 
+    subclipse：http://subclipse.tigris.org/update_1.6.）
+   在Help-->Install New Software
