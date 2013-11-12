@@ -22,4 +22,12 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_
      * （2）Path新增 %MAVEN_HOME%\bin;
 == 1.4 安装SVN ==
      从tortoisesvn官网下[http://tortoisesvn.net/downloads.html SVN]安装。本人安装的是1.6.7版本。
-执行安装即可
+     执行安装即可
+== 1.5 安装eclipse ==
+    从Eclipse官网下载[http://www.eclipse.org/downloads/ eclipse],下载完成之后打开eclipse。
+有以下几件事情需完成：
+     * （1）工程的默认编码方式设置
+     * （2）eclipse的SVN插件subclipse安装
+     * （3）eclipse的MAVEN插件m2eclipse安装
+     === 第一：默认编码方式设置 ===
+在eclipse的windows-->Preferences-->Workspace中设置为UTF-8。防止工程乱码
