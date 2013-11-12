@@ -19,3 +19,9 @@
       </mirrors>  
 </settings>
 }}}
+此步到此为止。
+
+== 二、导入eclispe ==
+开发基本步骤：
+ * （1）编译,执行 mvn clean install -Dmaven.test.skip=true 安装到本地maven 仓库
+ * （2）eclipse工程化,执行mvn eclipse:clean eclipse:eclipse使MAVEN工程转换成eclipse标准工程
