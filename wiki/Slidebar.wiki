@@ -1,5 +1,7 @@
   * [Introduction Introduction]
   * [UserGuide   UserGuide]
+      * [RunDemo RunDemo]
+      * [PrepareRuntime PrepareRuntime ]
   * [Tutorial Tutorial]
       * [tutorial01 tutorial01]
       * [tutorial02 tutorial02]
