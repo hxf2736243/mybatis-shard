@@ -37,3 +37,6 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_
 === 第三：安装m2eclipse插件=== 
    m2eclipse：http://m2eclipse.sonatype.org/sites/m2e
    在Help-->Install New Software 安装
+
+== 1.6 安装MySQL ==
+   从MySQL官网下载[http://www.mysql.com/downloads/ Mysql]5.6版本，安装即可。
