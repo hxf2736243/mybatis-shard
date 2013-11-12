@@ -4,18 +4,18 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_
 
 
 
-= 环境搭建 =
-== 版本 ==
+= 1、环境搭建 =
+== 1.1 版本 ==
     * 1、MySQL 5.5
     * 2、JDK 1.6
     * 3、Maven 2.0.11
-== 安装JDK ==
+== 1.2安装JDK ==
     从Oracle中拷贝下[http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html JDK1.6]，然后按照。
    安装目录：D:\JAVA_TOOLS\JDK_6
    安装完成后需配置环境变量。
      * （1）JAVA_HOME为 D:\JAVA_TOOLS\JDK_6
      * （2）Path新增 %JAVA_HOME%\bin;
-== 安装maven ==
+== 1.3安装maven ==
     从内网中拷贝下MAVEN，然后解压拷贝到目录：D:\JAVA_TOOLS中，
     设置MAVEN环境变量：
      * （1）MAVEN_HOME ：D:\JAVA_TOOLS\apache-maven-2.0.11
