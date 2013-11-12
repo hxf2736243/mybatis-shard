@@ -4,4 +4,18 @@
 == 一、下载源码 ==
  * 从 Google Code SVN 中检出源代码到你本地磁盘
    项目的checkout URL为：http://mybatis-shard.googlecode.com/svn/trunk/  
- * 配置
+ * 配置Maven本地仓库配置settings.xml，我配置的如下：
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	  <localRepository>D:/JAVA_TOOLS/repository</localRepository>
+      <mirrors>  
+       <mirror>  
+         <id>oss.sonatype.org</id>  
+         <name>oss.sonatype.org</name>  
+         <url>http://oss.sonatype.org/content/repositories/releases</url>  
+         <mirrorOf>central</mirrorOf>  
+       </mirror>  
+      </mirrors>  
+</settings>
+}}}
