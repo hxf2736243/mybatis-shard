@@ -28,5 +28,7 @@
 
 注意如果工程导入eclipse飘红了，说明eclipse配置出现问题，设置下m2eclipse的配置。
 在路径windows-->Preferences-->Maven---> User Setting中将配置指向你系统Maven的setting.xml
+成功之后，工程的结构如图：<br>
+http://img01.taobaocdn.com/bao/uploaded/i1/14839030631177145/T1GkMYFkFbXXXXXXXX_!!723064839-0-pix.jpg_570x10000.jpg
 
 == 三、运行工程 ==
