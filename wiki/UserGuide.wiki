@@ -16,7 +16,7 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_
      * （1）JAVA_HOME为 D:\JAVA_TOOLS\JDK_6
      * （2）Path新增 %JAVA_HOME%\bin;
 == 1.3安装maven ==
-    从内网中拷贝下MAVEN，然后解压拷贝到目录：D:\JAVA_TOOLS中，
+    从Apache官网下载下[http://maven.apache.org/download.cgi maven] 2.0版本，然后解压拷贝到目录：D:\JAVA_TOOLS中，
     设置MAVEN环境变量：
      * （1）MAVEN_HOME ：D:\JAVA_TOOLS\apache-maven-2.0.11
      * （2）Path新增 %MAVEN_HOME%\bin;
