@@ -32,3 +32,8 @@
 http://img01.taobaocdn.com/bao/uploaded/i1/14839030631177145/T1GkMYFkFbXXXXXXXX_!!723064839-0-pix.jpg_570x10000.jpg
 
 == 三、运行工程 ==
+在没本地MySql的情况只能运行如下demo：<br>
+http://img02.taobaocdn.com/bao/uploaded/i2/14839030690566754/T1TgU3Fc4XXXXXXXXX_!!723064839-0-pix.jpg_570x10000.jpg
+其它的复杂Demo请前往查看
+ * [Tutorial03 Tutorial03 ]
+ * [Tutorial04 Tutorial04]
