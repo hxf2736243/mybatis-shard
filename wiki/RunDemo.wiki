@@ -25,3 +25,8 @@
 开发基本步骤：
  * （1）编译,执行 mvn clean install -Dmaven.test.skip=true 安装到本地maven 仓库
  * （2）eclipse工程化,执行mvn eclipse:clean eclipse:eclipse使MAVEN工程转换成eclipse标准工程
+
+注意如果工程导入eclipse飘红了，说明eclipse配置出现问题，设置下m2eclipse的配置。
+在路径windows-->Preferences-->Maven---> User Setting中将配置指向你系统Maven的setting.xml
+
+== 三、运行工程 ==
