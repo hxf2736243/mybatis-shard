@@ -1,4 +1,6 @@
 #summary 用户须知
+= 目录 =
+http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_!!723064839-2-pix.png_570x10000.jpg
 
 = System Required =
     * 1、MySQL 5.5
@@ -9,6 +11,4 @@
 = Installation =
     * 第一步：请安装JDK1.6 并配置环境变量(不会的问Google)
     * 第二步：请下载一个Maven2.0版本(不会的问Google)
-
-
 
