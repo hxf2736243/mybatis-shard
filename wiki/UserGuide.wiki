@@ -1,14 +1,17 @@
 #summary 用户须知
-= 目录 =
+= UserGuide目录 =
 http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_!!723064839-2-pix.png_570x10000.jpg
 
-= System Required =
+
+
+= 环境搭建 =
+    == 版本 ==
     * 1、MySQL 5.5
     * 2、JDK 1.6
     * 3、Maven 2.0.11
-    * 4、MyBatis 3.0.5 
-
-= Installation =
-    * 第一步：请安装JDK1.6 并配置环境变量(不会的问Google)
-    * 第二步：请下载一个Maven2.0版本(不会的问Google)
+    == 安装JDK ==
+从Oracle中拷贝下[http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html JDK1.6]，然后按照。安装目录：D:\JAVA_TOOLS\JDK_6
+安装完成后需配置环境变量。
+（1）JAVA_HOME为 D:\JAVA_TOOLS\JDK_6
+（2）Path新增 %JAVA_HOME%\bin;
 
