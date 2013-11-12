@@ -25,3 +25,5 @@ http://img01.taobaocdn.com/bao/uploaded/i1/14839030662043263/T17qIQFaxdXXXXXXXX_
 cd mybatis-shard
 mvn clean install
 }}}
+
+获取更多，请查看[UserGuide UserGuide]
