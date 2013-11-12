@@ -20,6 +20,6 @@ http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_
     设置MAVEN环境变量：
      * （1）MAVEN_HOME ：D:\JAVA_TOOLS\apache-maven-2.0.11
      * （2）Path新增 %MAVEN_HOME%\bin;
-== 1.4 安装SVN
+== 1.4 安装SVN ==
      从tortoisesvn官网下[http://tortoisesvn.net/downloads.html SVN]安装。本人安装的是1.6.7版本。
 执行安装即可
