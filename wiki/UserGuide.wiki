@@ -1,4 +1,5 @@
 #summary 用户导航
+#labels Featured
 = UserGuide目录 =
 导航目录如下：<br>
 http://img04.taobaocdn.com/bao/uploaded/i4/14839030629209041/T19BwiFjhfXXXXXXXX_!!723064839-2-pix.png_570x10000.jpg
