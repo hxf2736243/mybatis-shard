@@ -1,0 +1,14 @@
+#summary 用户须知
+
+= System Required =
+    * 1、MySQL 5.5
+    * 2、JDK 1.6
+    * 3、Maven 2.0.11
+    * 4、MyBatis 3.0.5 
+
+= Installation =
+    * 第一步：请安装JDK1.6 并配置环境变量(不会的问Google)
+    * 第二步：请下载一个Maven2.0版本(不会的问Google)
+
+
+
