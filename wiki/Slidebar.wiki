@@ -5,7 +5,7 @@
   * [Tutorial 框架教程]
       * [tutorial01 取模路由ModRoute]
       * [tutorial02 映射路由MapRoute]
-      * [tutorial03 打造自己的路由逻辑]
+      * [tutorial03 扩展自己特有路由逻辑]
       * [tutorial04 MyBatis实现分库分表]
       * [tutorial05 MyBatis、Spring分库分表]
       * [tutorial06 多表连接查询实例]
