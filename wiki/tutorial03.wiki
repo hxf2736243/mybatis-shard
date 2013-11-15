@@ -1,8 +1,6 @@
-#summary One-sentence summary of this page.
+#summary 扩展自己特有路由逻辑.
 
-
-
-= Details =
+tutorial01 和tutorial02 讲解了框架自带的实现分表路由规则。本章将讲述如何根据自己的需求扩展自己的分表分库路由。 
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
